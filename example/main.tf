@@ -23,7 +23,7 @@ data "template_file" "dcos-config" {
 }
 
 module "eu-west-1-master-region" {
-  source = "git::ssh://git@github.com/YP28/terraform-aws-dcos.git?ref=v1.0.1//master-region"
+  source = "git::ssh://git@github.com/Ultimaker/terraform-aws-dcos.git?ref=master//master-region"
 
   region = "${var.region}"
 
