@@ -22,7 +22,7 @@ resource "aws_subnet" "master-subnet" {
   ipv6_cidr_block   = "${cidrsubnet(cidrsubnet(aws_vpc.master-region-vpc.ipv6_cidr_block, 5, 0), ceil(log(length(data.aws_availability_zones.available.names) * 2, 2)), count.index)}"
 
   map_public_ip_on_launch         = true
-  assign_ipv6_address_on_creation = true
+  assign_ipv6_address_on_creation = "${var.enable_ipv6}"
 
   tags {
     Name    = "dcos-master-subnet-${data.aws_availability_zones.available.names[count.index]}"
@@ -40,7 +40,7 @@ resource "aws_subnet" "public-subnet" {
   ipv6_cidr_block   = "${cidrsubnet(cidrsubnet(aws_vpc.master-region-vpc.ipv6_cidr_block, 5, 1), ceil(log(length(data.aws_availability_zones.available.names) * 2, 2)) , count.index)}"
 
   map_public_ip_on_launch         = true
-  assign_ipv6_address_on_creation = true
+  assign_ipv6_address_on_creation = "${var.enable_ipv6}"
 
   tags {
     Name    = "dcos-public-subnet-${data.aws_availability_zones.available.names[count.index]}"
@@ -58,7 +58,7 @@ resource "aws_subnet" "private-subnet" {
   ipv6_cidr_block   = "${cidrsubnet(cidrsubnet(aws_vpc.master-region-vpc.ipv6_cidr_block, 5, 2), ceil(log(length(data.aws_availability_zones.available.names) * 2, 2)), count.index)}"
 
   map_public_ip_on_launch         = false
-  assign_ipv6_address_on_creation = true
+  assign_ipv6_address_on_creation = "${var.enable_ipv6}"
 
   tags {
     Name    = "dcos-private-subnet-${data.aws_availability_zones.available.names[count.index]}"
