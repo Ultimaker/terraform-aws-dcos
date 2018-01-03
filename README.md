@@ -1,6 +1,6 @@
 # DC/OS on Amazon Web Services
 
-This module provides a simple way to deploy a DC/OS cluster on AWS. It will deploy it's 
+This module provides a simple way to deploy a DC/OS cluster on AWS. It will deploy its 
 machines and network configuration spread over all availability zones in a specific region.
 
 The main goal of this project is to be modular, while providing an extremely high availability

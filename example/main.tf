@@ -12,17 +12,17 @@ data "template_file" "dcos-config" {
     cluster_name = "${var.cluster_name}"
     cluster_id   = "${random_id.cluster-identifier.hex}"
 
-    bootstrap_ip   = "${module.eu-west-1-master-region.bootstrap-ip}"
-    bootstrap_port = "${module.eu-west-1-master-region.bootstrap-port}"
+    bootstrap_ip   = "${module.master-region.bootstrap-ip}"
+    bootstrap_port = "${module.master-region.bootstrap-port}"
 
-    master_elb_dns_address = "${module.eu-west-1-master-region.private-master-lb-dns}"
-    number_of_masters      = "${module.eu-west-1-master-region.number-of-masters}"
+    master_elb_dns_address = "${module.master-region.private-master-lb-dns}"
+    number_of_masters      = "${module.master-region.number-of-masters}"
 
-    s3_bucket = "${module.eu-west-1-master-region.exhibitor-bucket}"
+    s3_bucket = "${module.master-region.exhibitor-bucket}"
   }
 }
 
-module "eu-west-1-master-region" {
+module "master-region" {
   source = "git::ssh://git@github.com/Ultimaker/terraform-aws-dcos.git?ref=master//master-region"
 
   region = "${var.region}"
