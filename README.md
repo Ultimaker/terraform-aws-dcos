@@ -29,7 +29,7 @@ The `cluster_name` variable can contain any string you like. Please note that do
 as we use a different variable as a unique identifier for the cluster.
 
 Note that there is a `public_key` variable in the `example/variables.tf` file. This is a public key that
-we will use to log in to machines in our cluster. For purpose of this setup we'll create a new public/private
+we will use to log into machines in our cluster. For purpose of this setup we'll create a new public/private
 key pair that we'll use.
 
 So create that public/private key pair.
