@@ -1,0 +1,36 @@
+env:
+  global:
+    - TFLINT_VERSION=v0.5.3
+
+matrix:
+  include:
+  - env: TF_VERSION=0.10.1
+  - env: TF_VERSION=0.10.2
+  - env: TF_VERSION=0.10.3
+  - env: TF_VERSION=0.10.4
+  - env: TF_VERSION=0.10.5
+  - env: TF_VERSION=0.10.6
+  - env: TF_VERSION=0.10.7
+  - env: TF_VERSION=0.10.8
+  - env: TF_VERSION=0.11.0
+  - env: TF_VERSION=0.11.1
+
+sudo: required
+
+language: bash
+
+before_install:
+  # install terraform
+  - wget https://releases.hashicorp.com/terraform/"$TF_VERSION"/terraform_"$TF_VERSION"_linux_amd64.zip -O /tmp/terraform.zip
+  - sudo unzip -d /usr/local/bin/ /tmp/terraform.zip
+  - rm /tmp/terraform.zip
+  # install tflint
+  - wget https://github.com/wata727/tflint/releases/download/"$TFLINT_VERSION"/tflint_linux_amd64.zip -O /tmp/tflint.zip
+  - sudo unzip -d /usr/local/bin/ /tmp/tflint.zip
+  - rm /tmp/tflint.zip
+
+script:
+  - make init
+  - make validate
+  - make fmt
+  - make tflint
