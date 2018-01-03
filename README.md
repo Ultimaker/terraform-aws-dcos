@@ -13,7 +13,7 @@ An example of how this module should be used is provided in the `example` direct
 project. We'll go through the basic steps to get a cluster up and running.
 
 ### Prerequisites 
-- You should have Terraform installed,
+- You should have Terraform installed.
 - You should have a file located at `~/.aws/credentials` with your AWS access keys like this:
 ```
 [default]
@@ -59,7 +59,7 @@ Confirm that Terraform may apply the changes, and watch it spin up.
 Contributions are of course welcome. Keep in mind that we have a few aims for this project:
 
 - Everything that can fail, will fail. Design your features to survive a failure.
-- We've kept the `dcos-config.yml` and its rendering outside of the module. This is intentional 
+- We've kept the `dcos-config.yml` file and its rendering outside of the module. This is intentional 
 to be as configurable as possible. All configuration parameters can be found in the 
 [DC/OS documentation](https://dcos.io/docs/1.10/installing/custom/configuration/configuration-parameters/). 
 If you need anything from within the module to use in your `dcos-config.yml`, please add the output to 
