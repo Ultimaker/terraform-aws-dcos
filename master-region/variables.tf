@@ -72,6 +72,13 @@ variable "operating_system_user" {
   default = "core"
 }
 
+variable "enable_ipv6" {
+  type = "string"
+  description = "Enable IPv6 addresses."
+
+  default = true
+}
+
 variable "ssl_certificate_arn" {
   type        = "string"
   description = "The SSL certificate arn used to secure the loadbalancers."

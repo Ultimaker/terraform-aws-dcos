@@ -171,7 +171,7 @@ resource "aws_lb" "master-pub-lb" {
 
   internal           = false
   load_balancer_type = "application"
-  ip_address_type    = "dualstack"
+  ip_address_type    = "${var.enable_ipv6 == true ? "dualstack" : "ipv4"}"
 
   subnets = ["${aws_subnet.master-subnet.*.id}"]
 
@@ -267,7 +267,7 @@ resource "aws_lb" "pub-slv-pub-lb" {
 
   internal           = false
   load_balancer_type = "application"
-  ip_address_type    = "dualstack"
+  ip_address_type    = "${var.enable_ipv6 == true ? "dualstack" : "ipv4"}"
 
   subnets = ["${aws_subnet.public-subnet.*.id}"]
 
@@ -359,7 +359,7 @@ resource "aws_lb" "pub-slv-prvt-lb" {
 
   internal           = false
   load_balancer_type = "application"
-  ip_address_type    = "dualstack"
+  ip_address_type    = "${var.enable_ipv6 == true ? "dualstack" : "ipv4"}"
 
   subnets = ["${aws_subnet.public-subnet.*.id}"]
 
