@@ -36,3 +36,7 @@ output "private-slave-private-ip-list" {
     "${module.private-gpu-slave-instances.private-slave-private-ip-list}",
   ]
 }
+
+output "s3-vpce-id" {
+  value = "${aws_vpc_endpoint.private-s3-endpoint.id}"
+}
